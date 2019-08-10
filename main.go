@@ -922,6 +922,11 @@ is available in the $BITRISE_IDEDISTRIBUTION_LOGS_PATH environment variable`)
 				}
 			}
 		}
+		
+		os.Remove(dsymDir+"/node_modules")
+		os.Remove(dsymDir+"/src")
+		os.Remove(dsymDir+"/ios")
+		os.Remove(dsymDir+"/android")
 
 		if err := utils.ExportOutputDir(dsymDir, dsymDir, bitriseDSYMDirPthEnvKey); err != nil {
 			fail("Failed to export %s, error: %s", bitriseDSYMDirPthEnvKey, err)
