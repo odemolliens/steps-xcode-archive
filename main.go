@@ -924,6 +924,9 @@ is available in the $BITRISE_IDEDISTRIBUTION_LOGS_PATH environment variable`)
 			}
 		}
 		
+		log.Donef("bitriseDSYMPthEnvKey: %s", bitriseDSYMPthEnvKey)
+		log.Donef("dsymDir: %s", dsymDir)
+		
 		os.Remove(dsymDir+"/node_modules")
 		os.Remove(dsymDir+"/src")
 		os.Remove(dsymDir+"/ios")
