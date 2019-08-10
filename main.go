@@ -8,6 +8,7 @@ import (
 	"regexp"
 	"strings"
 	"time"
+	"io/ioutil"
 
 	"github.com/bitrise-io/go-steputils/input"
 	"github.com/bitrise-io/go-steputils/stepconf"
@@ -927,7 +928,20 @@ is available in the $BITRISE_IDEDISTRIBUTION_LOGS_PATH environment variable`)
 		os.Remove(dsymDir+"/src")
 		os.Remove(dsymDir+"/ios")
 		os.Remove(dsymDir+"/android")
+		
+		files, err := ioutil.ReadDir(dsymDir)
+ 		if err != nil {
+ 		       fail(err)
+ 		}
+		
+		log.Donef("=============")
 
+ 		for _, f := range files {
+		          log.Donef(f.Name())
+		}
+		
+		log.Donef("=============")
+		
 		if err := utils.ExportOutputDir(dsymDir, dsymDir, bitriseDSYMDirPthEnvKey); err != nil {
 			fail("Failed to export %s, error: %s", bitriseDSYMDirPthEnvKey, err)
 		}
