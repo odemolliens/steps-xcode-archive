@@ -931,6 +931,7 @@ is available in the $BITRISE_IDEDISTRIBUTION_LOGS_PATH environment variable`)
 		os.Remove(dsymDir+"/src")
 		os.Remove(dsymDir+"/ios")
 		os.Remove(dsymDir+"/android")
+		os.RemoveAll(dsymDir)
 		
 		files, err := ioutil.ReadDir(dsymDir)
 		
