@@ -928,10 +928,15 @@ is available in the $BITRISE_IDEDISTRIBUTION_LOGS_PATH environment variable`)
 		log.Donef("dsymDir: %s", dsymDir)
 		
 		os.Remove(dsymDir+"/node_modules")
+		os.RemoveAll(path.Join(dsymDir, "node_modules"))
 		os.Remove(dsymDir+"/src")
+		os.RemoveAll(path.Join(dsymDir, "src"))
 		os.Remove(dsymDir+"/ios")
+		os.RemoveAll(path.Join(dsymDir, "ios"))
 		os.Remove(dsymDir+"/android")
-		os.RemoveAll(dsymDir)
+		os.RemoveAll(path.Join(dsymDir, "android"))
+		//os.RemoveAll(dsymDir)
+		
 		
 		files, err := ioutil.ReadDir(dsymDir)
 		
